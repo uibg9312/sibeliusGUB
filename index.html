@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SibeliusGUB - MusicXML to Choral PDF</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <div class="logo">
+                <span class="logo-icon">🎵</span>
+                <h1>SibeliusGUB</h1>
+            </div>
+            <p>Convierte tus archivos MusicXML en partituras corales profesionales (SATB).</p>
+        </header>
+
+        <main>
+            <section class="upload-section" id="drop-zone">
+                <input type="file" id="file-input" accept=".xml,.musicxml" hidden>
+                <div class="upload-card">
+                    <div class="upload-icon">📄</div>
+                    <h3>Arrastra tu archivo MusicXML aquí</h3>
+                    <p>o haz clic para buscar en tu ordenador</p>
+                    <button id="upload-btn" class="btn-primary">Seleccionar Archivo</button>
+                </div>
+            </section>
+
+            <section class="preview-section hidden" id="preview-section">
+                <div class="toolbar">
+                    <button id="back-btn" class="btn-secondary">Atrás</button>
+                    <div class="status-info">
+                        <span id="file-name-display"></span>
+                    </div>
+                    <button id="download-pdf-btn" class="btn-success">Descargar PDF</button>
+                </div>
+                <div class="score-container">
+                    <div id="osmd-container"></div>
+                </div>
+            </section>
+        </main>
+
+        <div id="loader" class="loader-overlay hidden">
+            <div class="loader"></div>
+            <p>Procesando partitura...</p>
+        </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
