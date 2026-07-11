@@ -1,6 +1,5 @@
 import { OpenSheetMusicDisplay } from 'opensheetmusicdisplay';
 import { jsPDF } from 'jspdf';
-import html2canvas from 'html2canvas';
 
 // Elements
 const dropZone = document.getElementById('drop-zone');
@@ -27,7 +26,9 @@ function initOSMD() {
     drawCredits: true,
     drawMetronomeMarks: true,
     coloringEnabled: true,
-    renderBackend: 'canvas', // Changed from svg to canvas for better html2canvas compatibility
+    renderBackend: 'canvas',
+    drawingParameters: 'compact',
+    defaultColorMusic: '#000000',
   });
 }
 
@@ -46,13 +47,7 @@ async function handleFile(file) {
       const content = e.target.result;
       await osmd.load(content);
 
-      // Re-render with specific choral layout rules if needed
-      osmd.setOptions({
-        drawingParameters: "compact",
-        coloringEnabled: true,
-        defaultColorMusic: "#000000",
-      });
-
+      // Options are configured in initOSMD(); render after load.
       osmd.render();
 
       // Show preview
